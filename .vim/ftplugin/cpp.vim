@@ -21,7 +21,7 @@ set cino=l1g0(su1U1j1
 set noexpandtab
 
 " build tags of our cpp source with F-12
-nnoremap <F12> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q  --exclude="output/*" --exclude="data/*" --exclude="test/*" --exclude="rootpath/*" --exclude="timing/*" --exclude="profiling/*" .<cr>
+nnoremap <F12> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --exclude="output/*" --exclude="data/*" --exclude="test/*" --exclude="rootpath/*" --exclude="timing/*" --exclude="profiling/*" .<cr>
 inoremap <F12> <Esc>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --exclude="output/*" --exclude="data/*" --exclude="test/*" --exclude="rootpath/*" --exclude="timing/*" --exclude="profiling/*" .<cr>
 
 " shared_ptr is quite common...
