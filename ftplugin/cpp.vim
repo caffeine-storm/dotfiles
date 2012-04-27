@@ -22,7 +22,10 @@ set noexpandtab
 nnoremap <F12> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q  --exclude="output/*" --exclude="data/*" --exclude="test/*" --exclude="rootpath/*" --exclude="timing/*" --exclude="profiling/*" .<cr>
 inoremap <F12> <Esc>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --exclude="output/*" --exclude="data/*" --exclude="test/*" --exclude="rootpath/*" --exclude="timing/*" --exclude="profiling/*" .<cr>
 
-" ctrl-\ h-splits to a .cpp file based on the .hpp file currently open
-" or to a .hpp file based on the .cpp file currently open (TODO)
-nnoremap <C-W>\ :sp <C-R>%<BS><BS><BS>cpp<CR><C-W>x<C-W>=<C-W>j
+" shared_ptr is quite common...
+abbr ssp std::shared_ptr
+
+" 'ctrl-w \' h-splits to the .hpp or .cpp file corresponding to the currently
+" open file. Broken right now :(
+" nnoremap <C-W>\ :
 
