@@ -17,6 +17,9 @@ if has("syntax")
 	colorscheme wombat256
 endif
 
+" Make ':W' write the file too
+command W w
+
 set background=dark
 set laststatus=2
 set statusline=%f\ %m%r%h%w\ [%03.3b,%02.2B]\ %=%(%l,%v\ [%p%%]%)
