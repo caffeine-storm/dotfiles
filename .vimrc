@@ -6,6 +6,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set ic
+set smartcase
 
 set showmatch
 set ruler

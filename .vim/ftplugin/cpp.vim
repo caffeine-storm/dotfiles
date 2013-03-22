@@ -18,6 +18,7 @@ set path=src/**,/usr/include/,,
 " smarter indenting ftw
 set cindent
 set cino=l1g0(su1U1j1
+set smartindent
 set noexpandtab
 
 " build tags of our cpp source with F-12
@@ -68,4 +69,9 @@ endfunction
 
 " 'ctrl-w \' h-splits to the .hpp or .cpp counterpart of the current file.
 nnoremap <C-W>\ :exe CPPHSplit()<CR>
+nnoremap <Leader>head :.! ../codegen header ::%:t:r<C-Left>
+nnoremap <Leader>impl :.! ../codegen impl ::%:t:r<C-Left>
+nnoremap <Leader>inc :put! ='#include <'<CR> :starti!<CR>
+nnoremap <Leader><Space> :norm! F(a <Esc>h%i <Esc>
+nnoremap <Leader>/ :put! ='/******************************************************************************/'<CR>
 
