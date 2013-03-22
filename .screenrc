@@ -1,0 +1,39 @@
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# erase background with current bg color
+defbce "on" 
+
+# frig off visual bell
+vbell off
+
+# 5000 lines of scrollback
+defscrollback 5000
+
+# sets a status bar at the bottom of the terminal displaying open windows and time/date
+hardstatus alwayslastline '%{= kg}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}]%{=b C}[ %d %M %C ]%{W}'
+
+# dice the startup message
+startup_message off
+
+# Use bash as the default shell. The - means grab PS1(?)
+shell -$SHELL
+
+# Bindings for moving between regions
+bind j focus down
+bind k focus up
+bind ^j focus down
+bind ^k focus up
+
+# Get rid of hardcopy keybindings
+bind h
+bind ^h
+
+# Get rid of multi-user keybindings
+bind x
+bind ^x
+
