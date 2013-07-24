@@ -108,5 +108,9 @@ export EDITOR=/usr/bin/vim
 # Have python interpreters source my .pythonrc
 export PYTHONSTARTUP=~/.pythonrc
 
-setxkbmap -option ctrl:nocaps
+
+# Go away capslock!
+if hash setxbmap &>/dev/null ; then
+	setxkbmap -option ctrl:nocaps
+fi
 
