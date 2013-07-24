@@ -108,3 +108,5 @@ export EDITOR=/usr/bin/vim
 # Have python interpreters source my .pythonrc
 export PYTHONSTARTUP=~/.pythonrc
 
+setxkbmap -option ctrl:nocaps
+
