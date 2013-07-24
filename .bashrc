@@ -76,6 +76,7 @@ esac
 
 alias 'cd..'='cd ..'
 alias 'ack'='ack-grep'
+alias 'ispell'='ispell -d british-huge'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
