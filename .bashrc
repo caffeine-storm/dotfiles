@@ -104,3 +104,6 @@ fi
 # Set up EDITOR so that command-line stuff doesn't freak out when looking
 export EDITOR=/usr/bin/vim
 
+# Have python interpreters source my .pythonrc
+export PYTHONSTARTUP=~/.pythonrc
+

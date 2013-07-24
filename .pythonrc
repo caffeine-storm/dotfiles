@@ -1,0 +1,5 @@
+import rlcompleter, readline
+
+# Turn on tab completion
+readline.parse_and_bind('tab: complete')
+
