@@ -257,6 +257,7 @@ call <SID>X("StatusLineNC",	"857b6f",	"444444",	"none")
 call <SID>X("Pmenu",		"f6f3e8",	"444444",	"")
 call <SID>X("PmenuSel",		"121212",	"caeb82",	"")
 call <SID>X("WarningMsg",	"ff0000",	"",			"")
+call <SID>X("SpellBad",		"",			"700000",	"")
 			"ErrorMsg
 			"ModeMsg
 			"MoreMsg
