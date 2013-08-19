@@ -114,3 +114,6 @@ if hash setxbmap &>/dev/null ; then
 	setxkbmap -option ctrl:nocaps
 fi
 
+# 'mpcplaylist' prints a numbered list of songs that the mpd has queued
+alias mpcplaylist='mpc playlist | nl'
+
