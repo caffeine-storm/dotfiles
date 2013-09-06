@@ -1,0 +1,7 @@
+[user]
+	name = Thomas McKee
+	email = caffeine.storm@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+[alias]
+	stat = status -s
