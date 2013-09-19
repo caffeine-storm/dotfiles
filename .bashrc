@@ -110,7 +110,7 @@ export PYTHONSTARTUP=~/.pythonrc
 
 
 # Go away capslock!
-if hash setxbmap &>/dev/null ; then
+if hash setxkbmap &>/dev/null ; then
 	setxkbmap -option ctrl:nocaps
 fi
 
