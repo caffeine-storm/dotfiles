@@ -5,6 +5,4 @@
 	excludesfile = ~/.gitignore
 [alias]
 	stat = status -s
-[merge]
-	conflictstyle = diff3
 
