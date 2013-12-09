@@ -115,5 +115,5 @@ if hash setxkbmap &>/dev/null ; then
 fi
 
 # 'mpcplaylist' prints a numbered list of songs that the mpd has queued
-alias mpcplaylist='mpc playlist | nl'
+alias mpcplaylist='mpc playlist | nl | cut -c 1-80'
 
