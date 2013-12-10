@@ -27,6 +27,8 @@ inoremap <F12> <Esc>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --exclud
 
 " shared_ptr is quite common...
 abbr ssp std::shared_ptr
+" make_shared is also quite common...
+abbr sms std::make_shared
 
 " Implementation for ctrl-w \ feature
 fu! CPPHSplit()
