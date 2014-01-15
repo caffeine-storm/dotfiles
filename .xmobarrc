@@ -1,0 +1,18 @@
+Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ Run Network "eth0" ["-t","<dev>: <tx>|<rx>","-S","True","-L","1","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-p","3","-L","10","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-p","3","-t","Mem: <usedratio>%"] 10
+                    , Run Swap ["-p","3"] 10
+                    , Run Com "hostname" [] "" 1
+                    , Run Date "%a %b %_d %Y %H:%M" "date" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%cpu% | %memory% * %swap% | %eth0% }{ %hostname% | <fc=#ee9a00>%date%</fc>"
+       }
