@@ -9,11 +9,12 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
                     , Run Cpu ["-p","3","-L","10","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-p","3","-t","Mem: <usedratio>%"] 10
                     , Run Swap ["-p","3"] 10
-                    , Run Com "hostname" [] "" 1
+                    , Run Com "mpc current" [] "mpc" 10
+                    , Run Com "hostname" [] "" 0
                     , Run Date "%a %b %_d %Y %I:%M" "date" 10
-					, Run StdinReader
+                    , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %eth0% | %hostname% | <fc=#ee9a00>%date%</fc>"
+       , template = "%StdinReader% }{ %mpc% | %cpu% | %memory% * %swap% | %eth0% | %hostname% | <fc=#ee9a00>%date%</fc>"
        }

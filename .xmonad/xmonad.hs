@@ -7,7 +7,7 @@ import System.IO
 
 main = do
     xmproc <- spawnPipe "xmobar ~/.xmobarrc"
-    xmonad $ defaultConfig {
+    xmonad =<< xmobar defaultConfig {
         modMask = mod4Mask,
         manageHook = manageDocks <+> manageHook defaultConfig,
         layoutHook = avoidStruts  $  layoutHook defaultConfig,
