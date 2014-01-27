@@ -12,7 +12,10 @@ main = do
     xmonad =<< xmobar (defaultConfig `additionalKeysP` [
           ("<XF86AudioMute>", spawn "amixer -q -D pulse sset Master toggle"),
           ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 1- unmute"),
-          ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 1+ unmute") 
+          ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 1+ unmute"),
+          ("<XF86AudioPlay>", spawn "mpc -q toggle"),
+          ("<XF86AudioPrev>", spawn "mpc -q prev"),
+          ("<XF86AudioNext>", spawn "mpc -q next")
         ]) {
         modMask = mod4Mask,
         startupHook = setWMName "LG3D",
