@@ -116,4 +116,5 @@ fi
 
 # 'mpcplaylist' prints a numbered list of songs that the mpd has queued
 alias mpcplaylist='mpc playlist | nl | cut -c 1-80'
+alias mpctoggle='if [[ "$(mpc current)"x == x ]]; then mpc play ; else mpc stop ; fi'
 

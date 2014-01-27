@@ -13,7 +13,7 @@ main = do
           ("<XF86AudioMute>", spawn "amixer -q -D pulse sset Master toggle"),
           ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 1- unmute"),
           ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 1+ unmute"),
-          ("<XF86AudioPlay>", spawn "mpc -q toggle"),
+          ("<XF86AudioPlay>", spawn "bash -c 'if [[ \"$(mpc current)\"x == \"x\" ]]; then mpc -q play ; else mpc -q stop; fi ;'"),
           ("<XF86AudioPrev>", spawn "mpc -q prev"),
           ("<XF86AudioNext>", spawn "mpc -q next")
         ]) {
