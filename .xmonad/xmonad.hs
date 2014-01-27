@@ -10,7 +10,7 @@ import System.IO
 main = do
     xmproc <- spawnPipe "xmobar ~/.xmobarrc"
     xmonad =<< xmobar (defaultConfig `additionalKeysP` [
-          ("<XF86AudioMute>", spawn "amixer -q set Master toggle"),
+          ("<XF86AudioMute>", spawn "amixer -q -D pulse sset Master toggle"),
           ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 1- unmute"),
           ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 1+ unmute") 
         ]) {
