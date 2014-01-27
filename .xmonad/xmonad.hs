@@ -1,14 +1,19 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.SetWMName
+import XMonad.Util.EZConfig
 import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.EZConfig(additionalKeys)
+
 import System.IO
 
 main = do
     xmproc <- spawnPipe "xmobar ~/.xmobarrc"
-    xmonad =<< xmobar defaultConfig {
+    xmonad =<< xmobar (defaultConfig `additionalKeysP` [
+          ("<XF86AudioMute>", spawn "amixer -q set Master toggle"),
+          ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 1- unmute"),
+          ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 1+ unmute") 
+        ]) {
         modMask = mod4Mask,
         startupHook = setWMName "LG3D",
         manageHook = manageDocks <+> manageHook defaultConfig,
