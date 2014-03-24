@@ -1,3 +1,4 @@
+set print thread-events off
 python
 import sys
 import os.path
