@@ -18,7 +18,6 @@ main = do
           ("<XF86AudioNext>", spawn "mpc -q next")
         ]) {
         modMask = mod4Mask,
-        startupHook = setWMName "LG3D",
         manageHook = manageDocks <+> manageHook defaultConfig,
         layoutHook = avoidStruts  $  layoutHook defaultConfig,
         logHook = dynamicLogWithPP xmobarPP {
