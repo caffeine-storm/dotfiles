@@ -24,10 +24,10 @@ startup_message off
 shell -$SHELL
 
 # Bindings for moving between regions
-bind j focus down
-bind ^j focus down
-bind k focus up
-bind ^k focus up
+bind j focus next
+bind ^j focus next
+bind k focus prev
+bind ^k focus prev
 
 # Get rid of hardcopy keybindings
 bind h
