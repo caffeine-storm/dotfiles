@@ -42,3 +42,6 @@ set ofu=syntaxcomplete#Complete
 " tab-complete things more like bash
 set wildmode=longest:list
 
+" toggle hlsearch with leader-hl
+nnoremap <Leader>hl :set hlsearch!<CR>
+
