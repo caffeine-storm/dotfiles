@@ -45,3 +45,6 @@ set wildmode=longest:list
 " toggle hlsearch with leader-hl
 nnoremap <Leader>hl :set hlsearch!<CR>
 
+" toggle 'list' with leader-l
+nnoremap <Leader>l :set list!<CR>
+
