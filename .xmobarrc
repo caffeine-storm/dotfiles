@@ -7,8 +7,15 @@ Config {
     , position = Top
     , lowerOnStart = True
     , commands = [
-        Run Network "eth0" ["-t","<dev>: <tx>|<rx>","-S","True","-L","1","-H","50","--normal","green","--high","red"] 10
+        Run Network "eth0" ["-t","<dev>: <tx>|<rx>","-S","True","-m 7","-L","1","-H","50","--normal","green","--high","red"] 10
         , Run Cpu ["-p","3","-L","10","-H","50","--normal","green","--high","red"] 10
+        , Run BatteryP ["BAT0"]
+                       ["-t", "BAT:<left>%",
+                        "-L", "10", "-H", "80", "-p", "3",
+                        "--", "-O", "<fc=green>ON</fc> - ", "-i", "",
+                        "-L", "-15", "-H", "-5",
+                        "-l", "red", "-h", "green"]
+                       10
         , Run Memory ["-p","3","-t","Mem: <usedratio>%"] 10
         , Run Swap ["-p","3"] 10
         , Run Com "mpc" ["current"] "mpc" 100
