@@ -33,7 +33,7 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 filetype plugin on
 let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_enable_signs = 0
-let g:syntastic_cpp_compiler_options = '-std=c++0x -Wall -Wextra -Woverloaded-virtual'
+let g:syntastic_cpp_compiler_options = '-std=c++0x -Wall -Wextra -Woverloaded-virtual -Isrc -Isrc/ext'
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
