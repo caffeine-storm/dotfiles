@@ -30,50 +30,73 @@ abbr ssp std::shared_ptr
 " make_shared is also quite common...
 abbr sms std::make_shared
 
-" Implementation for ctrl-w \ feature
-fu! CPPHSplit()
+fu! CPPHTarget()
 	" If we're a hpp, need to find a cpp and vice-versa
 	let l:extension = expand('%:e') " l:extension should get either 'hpp' or 'cpp'
 
+	let l:target_path = ""
+
+	" Get the filename to ':splitfind' without any directory cruft. We use
+	" :splitfind to support .hpp in an ext folder linking to a .cpp outside of
+	" ext.
+	if l:extension == "hpp"
+		let l:target_path = expand('%:t:r').".cpp"
+	elseif l:extension == "cpp"
+		let l:target_path = expand('%:t:r').".hpp"
+	else
+		throw "Not a recognized file extension: '".l:extension."'"
+	endif
+
+	return l:target_path
+endfunction
+
+" Implementation for ctrl-w \ feature: "open the {hpp|cpp} file that goes with
+" the one I'm editing"
+fu! CPPHSplit()
 	" Cleanup any rouge windows... they don't get removed if they have changes
 	" though which is good.
 	if winnr('$') != 1
 		only
 	endif
 
-	let l:foo = ""
+	let l:target_path = CPPHTarget()
 
-	" Get the filename to ':splitfind' without any directory cruft. We use
-	" :splitfind to support .hpp in an ext folder linking to a .cpp outside of
-	" ext.
-	if l:extension == "hpp"
-		let l:foo = expand('%:t:r').".cpp"
-	elseif l:extension == "cpp"
-		let l:foo = expand('%:t:r').".hpp"
-	else
-		throw "Not a recognized file extension: '".l:extension."'"
-	endif
-
+	let l:extension = expand('%:e') " l:extension should get either 'hpp' or 'cpp'
 	" split-find the target
-	" exe "sfind ".l:foo
-
 	if l:extension == "hpp"
-		return "sfind ".l:foo." | wincmd x | wincmd = | wincmd p"
-		" wincmd x
-		" wincmd =
-		" wincmd p
+		" From a header, the .cpp will open above so we'll swap windows and
+		" cycle-to-prev-window so that the .cpp will be below and selected.
+		return "sfind ".l:target_path." | wincmd x | wincmd = | wincmd p"
 	else
-		return "sfind ".l:foo." | wincmd ="
-		" wincmd =
+		return "sfind ".l:target_path." | wincmd ="
+	endif
+endfunction
+
+fu! CPPHToggle()
+	" Cleanup any rouge windows... they don't get removed if they have changes
+	" though which is good.
+	if winnr('$') != 1
+		only
 	endif
 
+	let l:target_path = CPPHTarget()
+
+	" split-find the target and make it the 'only' window in the tab-page.
+	return "sfind ".l:target_path." | wincmd o"
 endfunction
 
 " 'ctrl-w \' h-splits to the .hpp or .cpp counterpart of the current file.
 nnoremap <C-W>\ :exe CPPHSplit()<CR>
+
+" 'ctrl-w |' replaces the current window with it's corresponding '.hpp' or
+" '.cpp'... like 'ctrl-w \' followed by 'ctrl-o'.
+nnoremap <C-W>\| :exe CPPHToggle()<CR>
+
 nnoremap <Leader>head :.! ../codegen header ::%:t:r<C-Left>
 nnoremap <Leader>impl :.! ../codegen impl ::%:t:r<C-Left>
 nnoremap <Leader>inc :put! ='#include <'<CR> :starti!<CR>
 nnoremap <Leader><Space> :norm! F(a <Esc>h%i <Esc>
-nnoremap <Leader>/ :put! ='/******************************************************************************/'<CR>
+" Insert a separator and a blank line above the current line.
+nnoremap <Leader>/ :put! ='/******************************************************************************/'<CR> :put =''<CR>j
+nnoremap <Leader>? :put ='/******************************************************************************/'<CR>
 
