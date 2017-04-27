@@ -74,6 +74,8 @@ nnoremap <C-W>\ :exe CPPHSplit()<CR>
 nnoremap <Leader>head :.! ../codegen header ::%:t:r<C-Left>
 nnoremap <Leader>impl :.! ../codegen impl ::%:t:r<C-Left>
 nnoremap <Leader>inc :put! ='#include <'<CR> :starti!<CR>
+" From inside a parenthesized expression, add a padding space between the
+" parentheses and the expression.
 nnoremap <Leader><Space> :norm! F(a <Esc>h%i <Esc>
 nnoremap <Leader>/ :put! ='/******************************************************************************/'<CR>
 
