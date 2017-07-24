@@ -36,7 +36,7 @@ let g:syntastic_enable_signs = 0
 
 " Is there a file with compiler flags to use?
 if filereadable(".syntastic_cpp_flags")
-	let g:syntastic_cpp_compiler_options = readfile(".syntastic_cpp_flags")
+	let g:syntastic_cpp_compiler_options = readfile(".syntastic_cpp_flags")[0]
 else
 	" Use a default that usually makes sense
 	let g:syntastic_cpp_compiler_options = '-std=c++0x -Wall -Wextra -Woverloaded-virtual -Isrc -Isrc/ext'
