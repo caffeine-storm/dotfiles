@@ -1,6 +1,7 @@
 .netrwhist
 *.swp
 *.pyc
+.syntastic_cpp_flags
 
 .xmonad/xmonad-x86_64-linux
 .xmonad/xmonad.errors
