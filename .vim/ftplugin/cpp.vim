@@ -95,6 +95,8 @@ nnoremap <C-W>\| :exe CPPHToggle()<CR>
 nnoremap <Leader>head :.! ../codegen header ::%:t:r<C-Left>
 nnoremap <Leader>impl :.! ../codegen impl ::%:t:r<C-Left>
 nnoremap <Leader>inc :put! ='#include <'<CR> :starti!<CR>
+" From inside a parenthesized expression, add a padding space between the
+" parentheses and the expression.
 nnoremap <Leader><Space> :norm! F(a <Esc>h%i <Esc>
 " Insert a separator and a blank line above the current line.
 nnoremap <Leader>/ :put! ='/******************************************************************************/'<CR> :put =''<CR>j
