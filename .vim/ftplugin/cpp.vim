@@ -99,6 +99,8 @@ nnoremap <Leader>inc :put! ='#include <'<CR> :starti!<CR>
 " From inside a parenthesized expression, add a padding space between the
 " parentheses and the expression.
 nnoremap <Leader><Space> :norm! F(a <Esc>h%i <Esc>
+nnoremap <Leader><BackSpace> :norm! F(lxh%hx
+
 " Insert a separator and a blank line above the current line.
 nnoremap <Leader>/ :put! ='/******************************************************************************/'<CR> :put =''<CR>j
 nnoremap <Leader>? :put ='/******************************************************************************/'<CR>
