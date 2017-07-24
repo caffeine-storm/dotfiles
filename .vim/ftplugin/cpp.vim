@@ -29,6 +29,7 @@ inoremap <F12> <Esc>:!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q --exclud
 abbr ssp std::shared_ptr
 " make_shared is also quite common...
 abbr sms std::make_shared
+abbr sup std::unique_ptr
 
 fu! CPPHTarget()
 	" If we're a hpp, need to find a cpp and vice-versa
