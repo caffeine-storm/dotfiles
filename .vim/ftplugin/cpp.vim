@@ -93,6 +93,11 @@ nnoremap <C-W>\ :exe CPPHSplit()<CR>
 " '.cpp'... like 'ctrl-w \' followed by 'ctrl-o'.
 nnoremap <C-W>\| :exe CPPHToggle()<CR>
 
+" Open Syntastic's location list of errors
+nnoremap <Leader>e :Errors<CR>
+" Close Syntastic's location list of errors
+nnoremap <Leader>E :lclose<CR>
+
 nnoremap <Leader>head :.! ../codegen header ::%:t:r<C-Left>
 nnoremap <Leader>impl :.! ../codegen impl ::%:t:r<C-Left>
 nnoremap <Leader>inc :put! ='#include <'<CR> :starti!<CR>
