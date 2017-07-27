@@ -98,6 +98,9 @@ nnoremap <Leader>e :Errors<CR>
 " Close Syntastic's location list of errors
 nnoremap <Leader>E :lclose<CR>
 
+" Shortcut for toggling Syntastic on/off
+nnoremap <Leader>S :SyntasticToggleMode<CR>
+
 nnoremap <Leader>head :.! ../codegen header ::%:t:r<C-Left>
 nnoremap <Leader>impl :.! ../codegen impl ::%:t:r<C-Left>
 nnoremap <Leader>inc :put! ='#include <'<CR> :starti!<CR>
