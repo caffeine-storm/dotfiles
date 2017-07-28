@@ -76,7 +76,14 @@ esac
 
 alias 'cd..'='cd ..'
 alias 'ack'='ack-grep'
-alias 'ispell'='ispell -d british-huge'
+
+# If we've got rlwrap, make ispell nicer to use
+which rlwrap > /dev/null
+if [[ $? ]]; then
+	alias 'ispell'='rlwrap ispell -d british-huge'
+else
+	alias 'ispell'='ispell -d british-huge'
+fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
