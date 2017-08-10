@@ -56,3 +56,5 @@ nnoremap <Leader>hl :set hlsearch!<CR>
 " toggle 'list' with leader-l
 nnoremap <Leader>l :set list!<CR>
 
+" toggle 'paste' with leader-p
+nnoremap <Leader>p :set paste!<CR>
