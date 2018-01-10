@@ -44,6 +44,10 @@ fu! CPPHTarget()
 		let l:target_path = expand('%:t:r').".cpp"
 	elseif l:extension == "cpp"
 		let l:target_path = expand('%:t:r').".hpp"
+	elseif l:extension == "h"
+		let l:target_path = expand('%:t:r').".c"
+	elseif l:extension == "c"
+		let l:target_path = expand('%:t:r').".h"
 	else
 		throw "Not a recognized file extension: '".l:extension."'"
 	endif
@@ -64,7 +68,7 @@ fu! CPPHSplit()
 
 	let l:extension = expand('%:e') " l:extension should get either 'hpp' or 'cpp'
 	" split-find the target
-	if l:extension == "hpp"
+	if l:extension == "hpp" || l:extension == "h"
 		" From a header, the .cpp will open above so we'll swap windows and
 		" cycle-to-prev-window so that the .cpp will be below and selected.
 		return "sfind ".l:target_path." | wincmd x | wincmd = | wincmd p"
