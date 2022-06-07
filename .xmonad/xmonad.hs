@@ -1,3 +1,5 @@
+import Data.Default
+
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -9,7 +11,7 @@ import System.IO
 
 main = do
     xmproc <- spawnPipe "xmobar ~/.xmobarrc"
-    xmonad =<< xmobar (defaultConfig `additionalKeysP` [
+    xmonad =<< xmobar (def `additionalKeysP` [
           ("<XF86AudioMute>", spawn "amixer -q -D pulse sset Master toggle"),
           ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 1- unmute"),
           ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 1+ unmute"),
@@ -18,8 +20,8 @@ main = do
           ("<XF86AudioNext>", spawn "mpc -q next")
         ]) {
         modMask = mod4Mask,
-        manageHook = manageDocks <+> manageHook defaultConfig,
-        layoutHook = avoidStruts  $  layoutHook defaultConfig,
+        manageHook = manageDocks <+> manageHook def,
+        layoutHook = avoidStruts  $  layoutHook def,
         logHook = dynamicLogWithPP xmobarPP {
             ppOutput = hPutStrLn xmproc,
             ppTitle = xmobarColor "green" "" . shorten 100
