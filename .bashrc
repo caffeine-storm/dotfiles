@@ -75,10 +75,14 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 alias 'cd..'='cd ..'
-alias 'ack'='ack-grep'
+
+which ack-grep &> /dev/null
+if [[ $? -eq 0 ]]; then
+	alias 'ack'='ack-grep'
+fi
 
 # If we've got rlwrap, make ispell nicer to use
-which rlwrap > /dev/null
+which rlwrap &> /dev/null
 if [[ $? ]]; then
 	alias 'ispell'='rlwrap ispell -d british-huge'
 else
