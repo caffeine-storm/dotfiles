@@ -2,9 +2,11 @@ set nocompatible
 
 set mouse=a
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+" 2-space tabs plz
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set ic
 set smartcase
 
