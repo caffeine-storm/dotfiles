@@ -29,6 +29,12 @@ bind ^j focus next
 bind k focus prev
 bind ^k focus prev
 
+# Prefer 'redisplay' to 'log{in,out}'
+bind l redisplay
+bind ^l redisplay
+bind L redisplay
+bind ^L redisplay
+
 # Get rid of hardcopy keybindings
 bind h
 bind ^h
