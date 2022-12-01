@@ -7,12 +7,17 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set ic
+
+" Nicer pattern matching
+set ignorecase
 set smartcase
+set incsearch
+
+" Don't leave buffers unshown while modified
+set nohidden
 
 set showmatch
 set ruler
-set incsearch
 
 if has("syntax")
 	set t_Co=256
