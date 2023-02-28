@@ -119,3 +119,10 @@ nnoremap <Leader>l :set list!<CR>
 
 " toggle 'paste' with leader-p
 nnoremap <Leader>p :set paste!<CR>
+
+" leader-d for go to definition
+nnoremap <Leader>d :YcmCompleter GoToDefinition<CR>
+" leader-r for go to references
+nnoremap <Leader>r :YcmCompleter GoToReferences<CR>
+" leader-h for go to header/implfile
+nnoremap <Leader>h :YcmCompleter GoToAlternateFile<CR>
