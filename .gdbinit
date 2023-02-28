@@ -11,6 +11,8 @@ set detach-on-fork off
 
 set print thread-events off
 
+set debuginfod enabled off
+
 python
 import sys, os.path
 sys.path.insert(0, os.path.expanduser('~/dotfiles/gdb-printers'))
