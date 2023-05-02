@@ -50,10 +50,10 @@ filetype plugin indent on    " required
 set mouse=a
 
 " 2-space tabs plz
-set expandtab
-set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+" don't choose (no)expandtab here, let ftplugins do it
+" set expandtab
 
 " Nicer pattern matching
 set ignorecase
@@ -126,3 +126,7 @@ nnoremap <Leader>d :YcmCompleter GoToDefinition<CR>
 nnoremap <Leader>r :YcmCompleter GoToReferences<CR>
 " leader-h for go to header/implfile
 nnoremap <Leader>h :YcmCompleter GoToAlternateFile<CR>
+" leader-F for go to FixIt
+nnoremap <Leader>F :YcmCompleter FixIt<CR>
+" leader-R for RefactorRename
+nnoremap <Leader>R :YcmCompleter RefactorRename 

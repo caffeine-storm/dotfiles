@@ -6,3 +6,7 @@
 [alias]
 	stat = status -s
 
+[init]
+	defaultBranch = main
+[merge]
+	conflictStyle = diff3

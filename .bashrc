@@ -76,17 +76,10 @@ fi
 
 alias 'cd..'='cd ..'
 
-which ack-grep &> /dev/null
-if [[ $? -eq 0 ]]; then
-	alias 'ack'='ack-grep'
-fi
-
 # If we've got rlwrap, make ispell nicer to use
 which rlwrap &> /dev/null
 if [[ $? ]]; then
-	alias 'ispell'='rlwrap ispell -d british-huge'
-else
-	alias 'ispell'='ispell -d british-huge'
+	alias 'ispell'='rlwrap ispell'
 fi
 
 # enable color support of ls and also add handy aliases
@@ -119,6 +112,11 @@ export EDITOR=/usr/bin/vim
 # Have python interpreters source my .pythonrc
 export PYTHONSTARTUP=~/.pythonrc
 
+# bash-completion for git... tasty!
+completions=/usr/share/bash-completion/completions/git
+if [ -e "$completions" ]; then
+	source "$completions"
+fi
 
 # Go away capslock!
 if [ -n "$DISPLAY" ]; then
@@ -129,3 +127,5 @@ fi
 alias mpcplaylist='mpc playlist | nl | cut -c 1-80'
 alias mpctoggle='if [[ "$(mpc current)"x == x ]]; then mpc play ; else mpc stop ; fi'
 
+# Add go binaries to PATH
+export PATH="$PATH:$HOME/go/bin"
