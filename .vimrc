@@ -50,6 +50,7 @@ filetype plugin indent on    " required
 set mouse=a
 
 " 2-space tabs plz
+set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 " don't choose (no)expandtab here, let ftplugins do it
