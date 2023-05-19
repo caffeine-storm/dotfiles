@@ -3,6 +3,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+" Install with julia -e 'import Pkg; Pkg.add("LanguageServer");
+" Pkg.add("StaticLint"); Pkg.add("SymbolServer")'
 let s:julia_cmdline = ['julia', '--startup-file=no', '--history-file=no', '-e', '
 \       using LanguageServer;
 \       using Pkg;
