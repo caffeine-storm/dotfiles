@@ -106,6 +106,11 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+# If a local golang is installed, add to PATH
+if [[ -e /usr/local/go/bin ]]; then
+	export PATH="$PATH:/usr/local/go/bin"
+fi
+
 # Set up EDITOR so that command-line stuff doesn't freak out when looking
 export EDITOR=/usr/bin/vim
 
