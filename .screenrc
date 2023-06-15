@@ -43,3 +43,5 @@ bind ^h
 bind x
 bind ^x
 
+# I'll change my titles myself, thanks
+defdynamictitle off
