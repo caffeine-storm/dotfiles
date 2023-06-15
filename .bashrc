@@ -28,19 +28,19 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
+# set a fancy prompt (non-colour, unless we know we "want" colour)
 case "$TERM" in
     xterm-color | screen-bce) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
+# uncomment for a coloured prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
+	# We have colour support; assume it's compliant with Ecma-48
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
@@ -82,7 +82,7 @@ if [[ $? ]]; then
 	alias 'ispell'='rlwrap ispell'
 fi
 
-# enable color support of ls and also add handy aliases
+# enable colour support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
@@ -111,6 +111,16 @@ if [[ -e /usr/local/go/bin ]]; then
 	export PATH="$PATH:/usr/local/go/bin"
 fi
 
+# Add go binaries to PATH
+if [[ -e $HOME/go/bin ]]; then
+	export PATH="$PATH:$HOME/go/bin"
+fi
+
+# Add home-folder binaries to PATH
+if [[ -e $HOME/bin ]]; then
+	export PATH="$PATH:$HOME/bin"
+fi
+
 # Set up EDITOR so that command-line stuff doesn't freak out when looking
 export EDITOR=/usr/bin/vim
 
@@ -132,5 +142,3 @@ fi
 alias mpcplaylist='mpc playlist | nl | cut -c 1-80'
 alias mpctoggle='if [[ "$(mpc current)"x == x ]]; then mpc play ; else mpc stop ; fi'
 
-# Add go binaries to PATH
-export PATH="$PATH:$HOME/go/bin"
