@@ -108,6 +108,11 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
 set ofu=syntaxcomplete#Complete
 
+" <F1> opening help is usually just a fat-finger; disable it.
+" :help will still work.
+map <F1> <Esc>
+imap <F1> <Esc>
+
 " tab-complete things more like bash
 set wildmode=longest:list
 
