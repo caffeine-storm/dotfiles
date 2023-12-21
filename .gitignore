@@ -2,6 +2,9 @@
 *.swp
 *.pyc
 .syntastic_cpp_flags
+
+# Ignore any .ackrc in local projects but this project still explicitly adds a
+# home-directory .ackrc
 .ackrc
 
 .xmonad/build-*
