@@ -45,3 +45,6 @@ bind ^x
 
 # I'll change my titles myself, thanks
 defdynamictitle off
+
+# When would I want to kill all my windows!?
+bind \
