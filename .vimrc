@@ -31,6 +31,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'google/vim-jsonnet'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -128,6 +129,8 @@ nnoremap <Leader>p :set paste!<CR>
 
 " leader-d for go to definition
 nnoremap <Leader>d :YcmCompleter GoToDefinition<CR>
+" leader-D for 'get docs'
+nnoremap <Leader>D :YcmCompleter GetDoc<CR>
 " leader-r for go to references
 nnoremap <Leader>r :YcmCompleter GoToReferences<CR>
 " leader-h for go to header/implfile
