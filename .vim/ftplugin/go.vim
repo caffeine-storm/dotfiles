@@ -19,3 +19,7 @@ endfunction
 
 " leader-t for swapping between test and impl files
 nnoremap <Leader>t :exe SwapImplTest()<CR>
+
+
+" leader-f for `go fmt`
+nnoremap <Leader>f :YcmCompleter Format<CR>
