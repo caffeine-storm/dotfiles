@@ -1,10 +1,14 @@
 arandr
+bear
+ccache
+cmake
 git-extras
 ibritish-huge
 ispell
 mpc
 mpd
 ncmpc
+python3-dev
 qiv
 rlwrap
 xmobar
