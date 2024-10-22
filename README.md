@@ -14,3 +14,9 @@ notes
 =====
 
 Install vundle with `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+Open vim, run `:PluginInstall`
+-> can fail b/c YCM not compiled
+	- need ubuntu packages 'python3-dev cmake'
+	- cd ~/.vim/bundle/YouCompleteMe
+	-	./install.py [--all | --foo-completer [ --bar-completer ... ]]
+		- ./install.py --clang-completer --go-completer
