@@ -23,6 +23,10 @@ startup_message off
 # Use the current shell but with '-' to make it a login shell.
 shell -$SHELL
 
+# Don't try to interface with utmp system; WSL doesn't have it and not every
+# window needs to look like a fresh login.
+deflogin off
+
 # Bindings for moving between regions
 bind j focus next
 bind ^j focus next
