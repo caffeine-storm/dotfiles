@@ -77,8 +77,7 @@ fi
 alias 'cd..'='cd ..'
 
 # If we've got rlwrap, make ispell nicer to use
-which rlwrap &> /dev/null
-if [[ $? ]]; then
+if [ -x "`which ispell`" ] && [ -x "`which rlwrap`" ]; then
 	alias 'ispell'='rlwrap ispell'
 fi
 
@@ -106,19 +105,31 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-# If a local golang is installed, add to PATH
-if [[ -e /usr/local/go/bin ]]; then
-	export PATH="$PATH:/usr/local/go/bin"
-fi
+export PATH
 
-# Add go binaries to PATH
-if [[ -e $HOME/go/bin ]]; then
-	export PATH="$PATH:$HOME/go/bin"
-fi
+# Thanks S.O.! https://superuser.com/a/39995/300939
+pathadd() {
+	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+		PATH="${PATH:+"$PATH:"}$1"
+	fi
+}
+pathprepend() {
+	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+		PATH="$1${PATH:+":$PATH"}"
+	fi
+}
+
+# If ccache is installed, put first on PATH to intercept calls
+pathprepend /usr/lib/ccache
+
+# If a local golang is installed, add to PATH
+pathadd /usr/local/go/bin
+
+# Add user-specific go binaries to PATH
+pathadd "$HOME/go/bin"
 
 # Add home-folder binaries to PATH
-if [[ -e $HOME/bin ]]; then
-	export PATH="$PATH:$HOME/bin"
+pathadd "$HOME/bin"
 
 # If screen is installed but /run/screen is missing or not useable, fall back
 # to SCREENDIR=~/.screen
@@ -142,7 +153,7 @@ if [ -e "$completions" ]; then
 fi
 
 # Go away capslock!
-if [ -n "$DISPLAY" ]; then
+if [ -n "$DISPLAY" ] && [ -x "`which setkbmap`" ]; then
 	setxkbmap -option ctrl:nocaps
 fi
 
@@ -153,7 +164,7 @@ alias mpctoggle='if [[ "$(mpc current)"x == x ]]; then mpc play ; else mpc stop 
 # add pyenv and pyenv-virtualenv
 if [ which pyenv &> /dev/null ]; then
 	export PYENV_ROOT="$HOME/.pyenv"
-	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+	command -v pyenv >/dev/null || PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
 fi
@@ -173,7 +184,7 @@ case ":$PATH:" in
         ;;
 
     *)
-        export PATH=/home/tmckee/.juliaup/bin${PATH:+:${PATH}}
+        PATH=/home/tmckee/.juliaup/bin${PATH:+:${PATH}}
         ;;
 esac
 
