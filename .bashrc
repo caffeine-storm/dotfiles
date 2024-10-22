@@ -119,6 +119,14 @@ fi
 # Add home-folder binaries to PATH
 if [[ -e $HOME/bin ]]; then
 	export PATH="$PATH:$HOME/bin"
+
+# If screen is installed but /run/screen is missing or not useable, fall back
+# to SCREENDIR=~/.screen
+if [ -x `which screen` ]; then
+	if [ ! -d /run/screen ] || [ ! -w /run/screen ]; then
+		mkdir -p ~/.screen
+		export SCREENDIR=~/.screen
+	fi
 fi
 
 # Set up EDITOR so that command-line stuff doesn't freak out when looking
