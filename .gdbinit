@@ -13,6 +13,9 @@ set print thread-events off
 
 set debuginfod enabled off
 
+# Turn off text styling... address as blue? on a dark bg? Puh-leez!
+# set style enabled off
+
 python
 import sys, os.path
 sys.path.insert(0, os.path.expanduser('~/dotfiles/gdb-printers'))
