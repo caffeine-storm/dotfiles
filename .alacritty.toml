@@ -1,0 +1,8 @@
+[ window ]
+	opacity = 0.5
+[ colors.primary ]
+	foreground = "#00ff00"
+	background = "#000000"
+[ font ]
+	normal = {family = "monospace", style = "Regular"}
+	size = 7.5
