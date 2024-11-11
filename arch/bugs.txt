@@ -1,0 +1,2 @@
+- starting nvim puts junk at the top
+- screen highlight is italicizing instead of hightlighting with reverse-video
