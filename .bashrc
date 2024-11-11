@@ -30,7 +30,7 @@ fi
 
 # set a fancy prompt (non-colour, unless we know we "want" colour)
 case "$TERM" in
-    xterm-color | screen-bce) color_prompt=yes;;
+    xterm-color | screen-bce | alacritty) color_prompt=yes;;
 esac
 
 # uncomment for a coloured prompt, if the terminal has the capability; turned
