@@ -189,3 +189,8 @@ case ":$PATH:" in
 esac
 
 # <<< juliaup initialize <<<
+
+# If there's a $HOME/.local.bashrc, source it now
+if [ -f $HOME/.local.bashrc ]; then
+	. $HOME/.local.bashrc
+fi
