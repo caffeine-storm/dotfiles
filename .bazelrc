@@ -1,0 +1,1 @@
+common --sandbox_writeable_path=$HOME/.cache/ccache
