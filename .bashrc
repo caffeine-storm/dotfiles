@@ -153,7 +153,7 @@ if [ -e "$completions" ]; then
 fi
 
 # Go away capslock!
-if [ -n "$DISPLAY" ] && [ -x "`which setxkbmap`" ]; then
+if [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ -x "`which setxkbmap`" ]; then
 	setxkbmap -option ctrl:nocaps
 fi
 
