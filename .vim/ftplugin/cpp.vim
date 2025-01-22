@@ -113,7 +113,5 @@ nnoremap <Leader>inc :put! ='#include <'<CR> :starti!<CR>
 nnoremap <Leader><Space> :norm! F(a <Esc>h%i <Esc>
 nnoremap <Leader><BackSpace> :norm! F(lxh%hx
 
-" Insert a separator and a blank line above the current line.
-nnoremap <Leader>/ :put! ='/******************************************************************************/'<CR> :put =''<CR>j
-nnoremap <Leader>? :put ='/******************************************************************************/'<CR>
-
+" leader-f for `clang-tidy --fix --format-style=google`
+nnoremap <Leader>f :!clang-tidy --fix --format-style=google %<CR>
