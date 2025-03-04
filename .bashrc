@@ -131,6 +131,11 @@ pathadd "$HOME/go/bin"
 # Add home-folder binaries to PATH
 pathadd "$HOME/bin"
 
+# add pipx bins if we've got pipx
+if [ -x `which pipx` ] ; then
+	pathadd "$HOME/.local/bin"
+fi
+
 # If screen is installed but /run/screen is missing or not useable, fall back
 # to SCREENDIR=~/.screen
 if [ -x `which screen` ]; then
