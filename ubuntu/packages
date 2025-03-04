@@ -5,11 +5,15 @@ cmake
 git-extras
 ibritish-huge
 ispell
+libcairo2-dev
+libpango1.0-dev
 mpc
 mpd
 ncmpc
+pkg-config
 python3-dev
 qiv
 rlwrap
+texlive-full
 xmobar
 xmonad
