@@ -167,7 +167,7 @@ alias mpcplaylist='mpc playlist | nl | cut -c 1-80'
 alias mpctoggle='if [[ "$(mpc current)"x == x ]]; then mpc play ; else mpc stop ; fi'
 
 # add pyenv and pyenv-virtualenv
-if [ which pyenv &> /dev/null ]; then
+if [ -d "$HOME/.pyenv" ] ; then
 	export PYENV_ROOT="$HOME/.pyenv"
 	command -v pyenv >/dev/null || PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
