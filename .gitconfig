@@ -5,6 +5,7 @@
 	excludesfile = ~/.gitignore
 [alias]
 	stat = status -s
+	push-force-with-lease = push --force-with-lease
 
 [init]
 	defaultBranch = main
