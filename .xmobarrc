@@ -7,7 +7,7 @@ Config {
     , position = Top
     , lowerOnStart = True
     , commands = [
-        Run Network "eth0" ["-t","<dev>: <tx>|<rx>","-S","True","-m 7","-L","1","-H","50","--normal","green","--high","red"] 10
+        Run Network "wlan0" ["-t","<dev>: <tx>|<rx>","-S","True","-m 7","-L","1","-H","50","--normal","green","--high","red"] 10
         , Run Cpu ["-p","3","-L","10","-H","50","--normal","green","--high","red"] 10
         , Run BatteryP ["BAT0"]
                        ["-t", "BAT:<left>%",
@@ -18,12 +18,13 @@ Config {
                        10
         , Run Memory ["-p","3","-t","Mem: <usedratio>%"] 10
         , Run Swap ["-p","3"] 10
-        , Run Com "mpc" ["current"] "mpc" 100
-        , Run Com "hostname" [] "" 0
+        -- , Run Com "mpc" ["current"] "mpc" 100
+        , Run Com "uname" ["-n"] "hostname" 0
         , Run Date "%a %b %_d %Y %I:%M" "date" 10
         , Run StdinReader
     ]
     , sepChar = "%"
     , alignSep = "}{"
-    , template = "[ %StdinReader% ] }{ [ %mpc% ]|[ %cpu% | %memory% * %swap% | %eth0% | %hostname% | <fc=#ee9a00>%date%</fc> ]"
+    -- , template = "[ %StdinReader% ] }{ [ %mpc% ]|[ %cpu% | %memory% * %swap% | %wlan0% | %hostname% | <fc=#ee9a00>%date%</fc> ]"
+    , template = "[ %StdinReader% ] }{ [ %cpu% | %memory% * %swap% | %wlan0% | %battery% | %hostname% | <fc=#ee9a00>%date%</fc> ]"
 }
