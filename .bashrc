@@ -77,7 +77,7 @@ fi
 alias 'cd..'='cd ..'
 
 # If we've got rlwrap, make ispell nicer to use
-if [ -x "`which ispell`" ] && [ -x "`which rlwrap`" ]; then
+if [ -x "`which ispell 2>/dev/null`" ] && [ -x "`which rlwrap 2>/dev/null`" ]; then
 	alias 'ispell'='rlwrap ispell'
 fi
 
@@ -132,13 +132,13 @@ pathadd "$HOME/go/bin"
 pathadd "$HOME/bin"
 
 # add pipx bins if we've got pipx
-if [ -x `which pipx` ] ; then
+if [ -x "`which pipx 2>/dev/null`" ] ; then
 	pathadd "$HOME/.local/bin"
 fi
 
 # If screen is installed but /run/screen is missing or not useable, fall back
 # to SCREENDIR=~/.screen
-if [ -x `which screen` ]; then
+if [ -x "`which screen 2>/dev/null`" ]; then
 	if [ ! -d /run/screen ] || [ ! -w /run/screen ]; then
 		mkdir -p ~/.screen
 		export SCREENDIR=~/.screen
@@ -158,7 +158,7 @@ if [ -e "$completions" ]; then
 fi
 
 # Go away capslock!
-if [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ -x "`which setxkbmap`" ]; then
+if [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ -x "`which setxkbmap 2>/dev/null`" ]; then
 	setxkbmap -option ctrl:nocaps
 fi
 
