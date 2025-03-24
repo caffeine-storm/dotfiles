@@ -130,6 +130,7 @@ pathadd "$HOME/go/bin"
 
 # Add home-folder binaries to PATH
 pathadd "$HOME/bin"
+pathadd "$HOME/tools/bin"
 
 # add pipx bins if we've got pipx
 if [ -x "`which pipx 2>/dev/null`" ] ; then
