@@ -18,5 +18,7 @@ Open vim, run `:PluginInstall`
 -> can fail b/c YCM not compiled
 	- need ubuntu packages 'python3-dev cmake'
 	- cd ~/.vim/bundle/YouCompleteMe
-	-	./install.py [--all | --foo-completer [ --bar-completer ... ]]
+	-    git fetch ; git merge --ff-only origin/master
+	-    git submodule update --init --recursive
+	-    ./install.py [--all | --foo-completer [ --bar-completer ... ]]
 		- ./install.py --clang-completer --go-completer
