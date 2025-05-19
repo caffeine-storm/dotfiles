@@ -4,5 +4,5 @@
 	foreground = "#00ff00"
 	background = "#000000"
 [ font ]
-	normal = {family = "monospace", style = "Regular"}
+	normal = {family = "SourceCodePro", style = "Regular"}
 	size = 7.5
