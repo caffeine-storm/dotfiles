@@ -111,7 +111,7 @@ nnoremap <Leader>inc :put! ='#include <'<CR> :starti!<CR>
 " From inside a parenthesized expression, add a padding space between the
 " parentheses and the expression.
 nnoremap <Leader><Space> :norm! F(a <Esc>h%i <Esc>
-nnoremap <Leader><BackSpace> :norm! F(lxh%hx
+nnoremap <Leader><BackSpace> :norm! F(lxh%hx<Esc>
 
 " leader-f for `clang-tidy --fix --format-style=google`
 nnoremap <Leader>f :!clang-tidy --fix --format-style=google %<CR>
