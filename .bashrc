@@ -168,11 +168,16 @@ alias mpcplaylist='mpc playlist | nl | cut -c 1-80'
 alias mpctoggle='if [[ "$(mpc current)"x == x ]]; then mpc play ; else mpc stop ; fi'
 
 # add pyenv and pyenv-virtualenv
-if [ -d "$HOME/.pyenv" ] ; then
+if [ -d "$HOME/.pyenv" ]; then
 	export PYENV_ROOT="$HOME/.pyenv"
 	command -v pyenv >/dev/null || PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
+fi
+
+# add nvm -- node version manager
+if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
+	source /usr/share/nvm/init-nvm.sh
 fi
 
 # Source completions scripts under dotfiles/completions.d/*bash
