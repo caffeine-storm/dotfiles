@@ -33,6 +33,9 @@ case "$TERM" in
     xterm-color | screen-bce | alacritty) color_prompt=yes;;
 esac
 
+# GPG_TTY is important according to gpg-agent(1)
+export GPG_TTY=$(tty)
+
 # uncomment for a coloured prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -121,6 +124,7 @@ pathprepend() {
 
 # If ccache is installed, put first on PATH to intercept calls
 pathprepend /usr/lib/ccache
+pathprepend /usr/lib/ccache/bin
 
 # If a local golang is installed, add to PATH
 pathadd /usr/local/go/bin
