@@ -23,3 +23,7 @@ nnoremap <Leader>t :exe SwapImplTest()<CR>
 
 " leader-f for `go fmt`
 nnoremap <Leader>f :YcmCompleter Format<CR>
+
+" leader-<space> for 'save the current file and re-run the tests in a
+" corresponding screen window'
+nnoremap <Leader><space> :w<CR>:silent !re-run-tests<CR>

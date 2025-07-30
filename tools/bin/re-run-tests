@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Typically called from inside a vim instance that is itself running in screen.
+# Send a command to the 'right' window to run the tests again.
+
+cmd="make test"
+
+# TODO: might need to 'msgwait 0' to suppress intermittent status-line updates
+
+screenNumber=`screen -Q number`
+windowNumber=$(echo "$screenNumber" | sed 's, .*,,')
+windowNumber=$((windowNumber + 1))
+windowName=$(echo "$screenNumber" | sed 's,.* (vim-\(.*\)),bash-\1,')
+
+# double-check that the expected window title is there
+foundName=`screen -p $windowNumber -Q title`
+if [[ "$foundName" != $windowName ]]; then
+	echo 1>&2 "screen window title mismatch; expected '$windowName' got '$foundName'"
+	echo 1>&2 "skipping test invocation..."
+else
+	screen -p $windowNumber -X exec ."!""!" echo $cmd
+fi
