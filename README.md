@@ -21,4 +21,4 @@ Open vim, run `:PluginInstall`
 	-    git fetch ; git merge --ff-only origin/master
 	-    git submodule update --init --recursive
 	-    ./install.py [--all | --foo-completer [ --bar-completer ... ]]
-		- ./install.py --clang-completer --go-completer
+		- ./install.py --clangd-completer --go-completer
