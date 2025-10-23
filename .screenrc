@@ -2,8 +2,13 @@
 # allow bold colors - necessary for some reason
 attrcolor b ".I"
 
+# TODO: at least on WSL, we seem to not get the right terminal width when
+# launching a screenrc that vsplits; resizing the terminal windows seems to
+# update things that need updating but it's not clear why this is suddenly
+# different.
 # tell screen how to set colors. AB = background, AF=foreground
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 
 # erase background with current bg color
 defbce "on" 
