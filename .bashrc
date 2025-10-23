@@ -132,6 +132,9 @@ pathadd /usr/local/go/bin
 # Add user-specific go binaries to PATH
 pathadd "$HOME/go/bin"
 
+# Add user-specific rust binaries to PATH
+pathadd "$HOME/.cargo/bin"
+
 # Add home-folder binaries to PATH
 pathadd "$HOME/bin"
 pathadd "$HOME/tools/bin"
