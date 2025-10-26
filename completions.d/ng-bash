@@ -1,0 +1,2 @@
+# Load Angular CLI autocompletion.
+[ -x "`which ng`" ] && source <(ng completion script)

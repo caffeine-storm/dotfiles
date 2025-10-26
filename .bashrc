@@ -187,6 +187,9 @@ elif [ -d "$HOME/.nvm" ]; then
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+PNPM_HOME="$HOME/.local/share/pnpm"
+pathprepend "$PNPM_HOME" && export PNPM_HOME
+
 # Source completions scripts under dotfiles/completions.d/*bash
 DOTFILES_DIR="$HOME/dotfiles"
 for fname in `ls $DOTFILES_DIR/completions.d/*bash` ; do
