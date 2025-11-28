@@ -5,6 +5,27 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export PATH
+
+# Thanks S.O.! https://superuser.com/a/39995/300939
+pathadd() {
+	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+		PATH="${PATH:+"$PATH:"}$1"
+	fi
+}
+pathprepend() {
+	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+		PATH="$1${PATH:+":$PATH"}"
+	fi
+}
+
+# returns 0 iff $1 is an executable on $PATH
+havebin() {
+	[ -x "`which $1 2>/dev/null`" ]
+}
+
+DOTFILES_DIR="$HOME/dotfiles"
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
@@ -69,37 +90,13 @@ screen*|xterm*|rxvt*)
 esac
 
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-alias 'cd..'='cd ..'
-
-# If we've got rlwrap, make ispell nicer to use
-if [ -x "`which ispell 2>/dev/null`" ] && [ -x "`which rlwrap 2>/dev/null`" ]; then
-	alias 'ispell'='rlwrap ispell'
+if [ -f $DOTFILES_DIR/tools/bash-helpers.sh ]; then
+	. $DOTFILES_DIR/tools/bash-helpers.sh 
 fi
-
-# enable colour support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -lh'
-alias la='ls -A'
-#alias l='ls -CF'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -107,24 +104,6 @@ alias la='ls -A'
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-
-export PATH
-
-# Thanks S.O.! https://superuser.com/a/39995/300939
-pathadd() {
-	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-		PATH="${PATH:+"$PATH:"}$1"
-		return 0
-	fi
-	return 1
-}
-pathprepend() {
-	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-		PATH="$1${PATH:+":$PATH"}"
-		return 0
-	fi
-	return 1
-}
 
 # If ccache is installed, put first on PATH to intercept calls
 pathprepend /usr/lib/ccache
@@ -146,7 +125,7 @@ pathadd "$HOME/.local/bin"
 
 # If screen is installed but /run/screen is missing or not useable, fall back
 # to SCREENDIR=~/.screen
-if [ -x "`which screen 2>/dev/null`" ]; then
+if havebin screen; then
 	if [ ! -d /run/screen ] || [ ! -w /run/screen ]; then
 		mkdir -p ~/.screen
 		export SCREENDIR=~/.screen
@@ -166,13 +145,9 @@ if [ -e "$completions" ]; then
 fi
 
 # Go away capslock!
-if [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ -x "`which setxkbmap 2>/dev/null`" ]; then
+if [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && havebin setxkbmap; then
 	setxkbmap -option ctrl:nocaps
 fi
-
-# 'mpcplaylist' prints a numbered list of songs that the mpd has queued
-alias mpcplaylist='mpc playlist | nl | cut -c 1-80'
-alias mpctoggle='if [[ "$(mpc current)"x == x ]]; then mpc play ; else mpc stop ; fi'
 
 # add pyenv and pyenv-virtualenv
 if [ -d "$HOME/.pyenv" ]; then
@@ -195,7 +170,6 @@ PNPM_HOME="$HOME/.local/share/pnpm"
 pathprepend "$PNPM_HOME" && export PNPM_HOME
 
 # Source completions scripts under dotfiles/completions.d/*bash
-DOTFILES_DIR="$HOME/dotfiles"
 for fname in `ls $DOTFILES_DIR/completions.d/*bash` ; do
 	source $fname
 done
