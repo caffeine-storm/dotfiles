@@ -166,6 +166,9 @@ elif [ -d "$HOME/.nvm" ]; then
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+# add ghcup
+[ -f "/home/tmckee/.ghcup/env" ] && . "/home/tmckee/.ghcup/env" # ghcup-env
+
 PNPM_HOME="$HOME/.local/share/pnpm"
 pathprepend "$PNPM_HOME" && export PNPM_HOME
 
