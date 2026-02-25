@@ -1,4 +1,6 @@
+apt-cacher-ng
 arandr
+auto-apt-proxy
 bear
 ccache
 cmake
