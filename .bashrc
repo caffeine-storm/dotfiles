@@ -135,6 +135,25 @@ fi
 # Set up EDITOR so that command-line stuff doesn't freak out when looking
 export EDITOR=/usr/bin/vim
 
+# break my habit of 'sudo vim /foo/bar'
+sudo() {
+	case "$1" in
+		vi|vim|nvim|nano)
+			echo -n "don't sudo $1 yah dingus! try 'sudoedit ${@:2}' ."
+			sleep 1
+			echo -n "."
+			sleep 1
+			echo "."
+			sleep 1
+			shift
+			command sudoedit "$@"
+			;;
+		*)
+			command sudo "$@"
+			;;
+	esac
+}
+
 # Have python interpreters source my .pythonrc
 export PYTHONSTARTUP=~/.pythonrc
 
