@@ -168,8 +168,12 @@ if [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && havebin setxkbmap; then
 	setxkbmap -option ctrl:nocaps
 fi
 
-# add pyenv and pyenv-virtualenv
-if [ -d "$HOME/.pyenv" ]; then
+# add pyenv and pyenv-virtualenv _unless_ we've asked to disable it
+if [[ -f "$HOME/.disable-pyenv" ]]; then
+  pyenv() {
+    echo 1>&2 "pyenv is disabled because $HOME/.disable-pyenv exists!"
+  }
+elif [[ -d "$HOME/.pyenv" ]]; then
 	export PYENV_ROOT="$HOME/.pyenv"
 	command -v pyenv >/dev/null || PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
