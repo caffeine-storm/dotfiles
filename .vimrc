@@ -50,6 +50,10 @@ filetype plugin indent on    " required
 " setting 'nocompatible' above turns on modelines=5 ... no thanks!
 set nomodeline
 
+" define an empty ycm_language_server here so that everywhere else can assume
+" it's defined already
+let g:ycm_language_server = []
+
 set mouse=a
 
 " 2-space tabs plz
