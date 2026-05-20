@@ -22,3 +22,6 @@ Open vim, run `:PluginInstall`
 	-    git submodule update --init --recursive
 	-    ./install.py [--all | --foo-completer [ --bar-completer ... ]]
 		- ./install.py --clangd-completer --go-completer
+
+github.com/ycm-core/lsp-examples is useful for example LSP configurations by
+language.
