@@ -47,6 +47,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" setting 'nocompatible' above turns on modelines=5 ... no thanks!
+set nomodeline
+
 set mouse=a
 
 " 2-space tabs plz
