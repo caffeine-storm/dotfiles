@@ -1,0 +1,5 @@
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl https://pyenv.run | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+curl -fsSL https://install.julialang.org | sh
